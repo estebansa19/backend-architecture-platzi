@@ -1,0 +1,1 @@
+class Lent < Product; end
