@@ -6,7 +6,7 @@ module V1
       auth_token = AuthenticateUser.new(params[:email], params[:password]).call
   
       if auth_token
-        render json: { auth_token: auth_token  }
+        render json: { auth_token: auth_token  }, status: :ok
       else
         render json: { error: 'Invalid credentials' }, status: :unauthorized
       end
