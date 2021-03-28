@@ -15,7 +15,7 @@ module V1
         review = datastore.entity 'Review' do |r|
           r[:title] = review_params[:title]
           r[:content] = review_params[:content]
-          r[:author] = review_params[:author]
+          r[:author] = current_user.id
           r[:product] = review_params[:product].to_json
         end
   
@@ -34,9 +34,7 @@ module V1
     end
   
     def valid_for_create?
-      review_params[:title].present? && 
-        review_params[:content].present? && 
-        review_params[:author].present? && 
+      review_params[:title].present? && review_params[:content].present? && 
         review_params[:product].present?
     end
   

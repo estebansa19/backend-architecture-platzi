@@ -8,7 +8,7 @@ module V1
   
     def authenticate_request
       @current_user = AuthorizeRequest.new(request.headers).call
-  
+      
       render json: { error: 'Not authorized' }, status: :unauthorized unless @current_user
     end
   end
